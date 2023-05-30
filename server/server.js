@@ -1,9 +1,16 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-app.get('/', function (req, res) {
-  res.send('Hello World');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get('/welcomer', function (req, res) {
+  res.send(`Hello ${req.query.name} from Express`);
+});
+
+app.post('/welcomer2', function (req, res) {
+  res.send(`Hello ${req.body.name} from Express`);
 });
 
 app.listen(3000);
