@@ -1,9 +1,20 @@
-const hhtp = require('http');
+const express = require('express');
 
-function responsePetition(request, response) {
-  response.end('Hello World');
-}
+const app = express();
 
-let server = hhtp.createServer(responsePetition);
+app.get('/', function (req, res) {
+  res.send('Hello World');
+});
 
-server.listen(3000);
+app.listen(3000);
+
+/*
+ ** //Other way to start a server
+ **
+ ** const hhtp = require('http');
+ ** function responsePetition(request, response) {
+ **    response.end('Hello World');
+ **  }
+ **  let server = hhtp.createServer(responsePetition);
+ **  server.listen(3000);
+ */
